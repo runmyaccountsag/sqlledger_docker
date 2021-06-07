@@ -43,8 +43,7 @@ RUN touch runmyaccounts/users/members
 RUN printf "[root login]\npassword=1234\n" > runmyaccounts/users/members
 # RUN mkdir -p Sites/
 RUN mkdir /var/www/rma
-RUN ln -s runmyaccounts/ /var/www/rma/runmyaccounts
-# RUN cp -r /home/testuser/runmyaccounts /var/www/rma/
+RUN cp -r /home/testuser/runmyaccounts /var/www/rma/
 
 # RUN /usr/sbin/httpd
 
