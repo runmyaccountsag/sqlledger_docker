@@ -17,9 +17,11 @@ This is a Dockerfile to run SQL-Ledger.
 3. Open pg-hba.conf (Should be in the same folder as postgresql.conf)
     1. Add a new entry (IP should look like this: `192.168.1.1/24` (24 can change too, but should generally work)):  
     
-     | Type    | Database    | User    | Address    | Method    |
-     | ------ | ---------- | ------ | --------- |-------- |
-     | host | all      | all  | ip/24   | trust  |
+         | Type    | Database    | User    | Address    | Method    |
+         | ------ | ---------- | ------ | --------- |-------- |
+         | host | all      | all  | ip/24   | trust  |
+
+     2. Restart DB Service
 
 4. Now postgres accepts connections from different locations like docker.
 You can test this by connecting to it by executing this command in docker:
