@@ -24,7 +24,7 @@ RUN echo "rma:1234" | chpasswd
 RUN echo '%root ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 
-RUN git clone https://github.com/ledger123/runmyaccounts.git runmyaccounts
+RUN git clone -b develop https://github.com/ledger123/runmyaccounts.git runmyaccounts
 RUN mkdir runmyaccounts/users
 RUN mkdir runmyaccounts/spool
 RUN touch runmyaccounts/users/members
@@ -41,16 +41,17 @@ RUN dnf -y install dnf-plugins-core
 RUN dnf config-manager --set-enabled powertools
 RUN dnf repolist
 
+# TODO use versions for depencenies
 # Install Perl Modules for ledger
-RUN yum install perl-DBI.x86_64 -y
 RUN yum install perl-Time-ParseDate.noarch -y
 RUN yum install perl-TimeDate.noarch -y
-RUN yum install perl-JSON-XS.x86_64 -y
 RUN yum install perl-File-Slurper.noarch -y
 RUN yum install perl-List-MoreUtils.noarch -y
-RUN perl -MCPAN -e 'install Text::Markdown'
-RUN perl -MCPAN -e 'install DBIx::Simple'
-RUN yum install perl-DBD-Pg.x86_64 -y
+RUN yum install perl-JSON-XS -y
+RUN yum install perl-DBI -y
+RUN yum install perl-DBD-Pg -y
+RUN cpan Text::Markdown -y
+RUN cpan DBIx::Simple -y
 
 USER rma
 
