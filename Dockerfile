@@ -24,7 +24,7 @@ RUN echo "rma:1234" | chpasswd
 RUN echo '%root ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 
-RUN git clone -b develop https://github.com/ledger123/runmyaccounts.git runmyaccounts
+RUN git clone -b master https://github.com/ledger123/runmyaccounts.git runmyaccounts
 RUN mkdir runmyaccounts/users
 RUN mkdir runmyaccounts/spool
 RUN touch runmyaccounts/users/members
@@ -52,6 +52,7 @@ RUN yum install perl-DBI -y
 RUN yum install perl-DBD-Pg -y
 RUN cpan Text::Markdown -y
 RUN cpan DBIx::Simple -y
+RUN cpan SL::Form -y
 
 USER rma
 
