@@ -50,9 +50,31 @@ RUN yum install perl-List-MoreUtils.noarch -y
 RUN yum install perl-JSON-XS -y
 RUN yum install perl-DBI -y
 RUN yum install perl-DBD-Pg -y
+
 RUN cpan Text::Markdown -y
 RUN cpan DBIx::Simple -y
 RUN cpan SL::Form -y
+
+# requred for PDF (not all are required)
+RUN yum install texlive-pdftex  -y
+RUN YUM install texlive-latex-bin -y
+RUN YUM install texlive-texconfig* -y
+RUN YUM install texlive-latex* -y
+RUN YUM install texlive-metafont* -y
+RUN YUM install texlive-cmap* -y
+RUN YUM install texlive-ec -y
+RUN YUM install texlive-fncychap* -y
+RUN YUM install texlive-pdftex-def -y
+RUN YUM install texlive-fancyhdr* -y
+RUN YUM install texlive-titlesec* -y
+RUN YUM install texlive-multirow -y
+RUN YUM install texlive-framed* -y
+RUN YUM install texlive-wrapfig* -y
+RUN YUM install texlive-parskip* -y
+RUN YUM install texlive-caption -y
+RUN YUM install texlive-ifluatex* -y
+RUN YUM install texlive-collection-fontsrecommended -y
+RUN YUM install texlive-collection-latexrecommended -y
 
 USER rma
 
