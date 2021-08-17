@@ -9,6 +9,20 @@ This is a Dockerfile to run SQL-Ledger.
 4. Run `sudo /usr/sbin/httpd`
 5. Instance should be available via `localhost:8082/runmyaccounts`
 
+### Some useful commands: 
+
+* Edit apache cofig  
+`sudo vi /etc/httpd/conf/httpd.conf`
+
+* Restart apache  
+`sudo /usr/sbin/httpd -k restart`
+
+* Access to log files:  
+`sudo -i`  
+`cd /var/log/httpd`  
+`tail -n 100 -f error_log`
+  
+
 ## Setup Local Postgres to accept docker connection
 1. Open postgresql.conf (can be found by executing: `sudo -U postgres psql -c 'SHOW config_file'`)
     1. Change `listen_addresses` to `'*'`
