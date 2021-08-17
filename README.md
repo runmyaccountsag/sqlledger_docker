@@ -64,3 +64,9 @@ This is a Dockerfile to run SQL-Ledger.
 Currently, the container cannot run in the background and httpd doesnt start automatically.
 This should be fixed by adding an Entrypoint or CMD line (Commented in the DockerFile), 
 but the issue with that is, that the Container doesn't continue running.
+
+
+## TODOs
+
+- [ ] Align apache configuration to be a like prod 
+- [ ] Align ledger configuration to as must as possible alike prod
