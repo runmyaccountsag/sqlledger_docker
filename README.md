@@ -11,16 +11,16 @@ This is a Dockerfile to run SQL-Ledger.
 
 ### Some useful commands: 
 
-* Edit apache cofig  
+* Edit Apache configuration  
 `sudo vi /etc/httpd/conf/httpd.conf`
 
-* Restart apache  
+* Restart Apache  
 `sudo /usr/sbin/httpd -k restart`
 
-* Access to log files:  
+* Access log files:  
 `sudo -i`  
 `cd /var/log/httpd`  
-`tail -n 100 -f error_log`
+`tail -n 200 -f error_log`
   
 
 ## Setup Local Postgres to accept docker connection
@@ -30,9 +30,9 @@ This is a Dockerfile to run SQL-Ledger.
 3. Open pg-hba.conf (Should be in the same folder as postgresql.conf)
     1. Add a new entry (IP should look like this: `192.168.1.1/24` (24 can change too, but should generally work)):  
     
-         | Type    | Database    | User    | Address    | Method    |
-         | ------ | ---------- | ------ | --------- |-------- |
-         | host | all      | all  | ip/24   | trust  |
+         | Type    | Database    | User    | Address    | Method  |
+         | ------ | ---------- | ------ | ------------ |-------- |
+         | host   | all        | all    | ip/24        | trust  |
 
      2. Restart DB Service
 
@@ -47,8 +47,10 @@ This is a Dockerfile to run SQL-Ledger.
    You can generally use docker alias as the ip.
    So you don't have to change them all the time when your ip changes.
 
-6. You have to check out sql ledger branch into following folder: `/home/runmyaccounts`
-   For me, it was `/Users/vreinok/runmyaccounts/runmyaccounts` only then run the docker run command otherwise 
+### Local access to ledger src
+
+1. You have to check out sql ledger branch into following folder: `/home/runmyaccounts`
+   For me, it was `/Users/YOUR_USER/runmyaccounts/runmyaccounts` only then run the docker run command otherwise 
    you will get ledger exception that mention something about  
     - `could not connect to server: Connection refused
       Is the server running on host “localhost” (127.0.0.1) and accepting
@@ -60,5 +62,5 @@ This is a Dockerfile to run SQL-Ledger.
 
 ## Issues that need to be fixed
 Currently, the container cannot run in the background and httpd doesnt start automatically.
-This should be fixed by adding an Entrypoint or CMD line (Commented in the DockerFile) 
+This should be fixed by adding an Entrypoint or CMD line (Commented in the DockerFile), 
 but the issue with that is, that the Container doesn't continue running.
