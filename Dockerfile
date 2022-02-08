@@ -1,4 +1,4 @@
-FROM centos:centos8
+FROM tgagor/centos:stream8
 
 RUN useradd -ms /home/runmyaccounts rma
 RUN usermod -aG root rma
@@ -57,24 +57,24 @@ RUN cpan SL::Form -y
 
 # requred for PDF (not all are required)
 RUN yum install texlive-pdftex  -y
-RUN YUM install texlive-latex-bin -y
-RUN YUM install texlive-texconfig* -y
-RUN YUM install texlive-latex* -y
-RUN YUM install texlive-metafont* -y
-RUN YUM install texlive-cmap* -y
-RUN YUM install texlive-ec -y
-RUN YUM install texlive-fncychap* -y
-RUN YUM install texlive-pdftex-def -y
-RUN YUM install texlive-fancyhdr* -y
-RUN YUM install texlive-titlesec* -y
-RUN YUM install texlive-multirow -y
-RUN YUM install texlive-framed* -y
-RUN YUM install texlive-wrapfig* -y
-RUN YUM install texlive-parskip* -y
-RUN YUM install texlive-caption -y
-RUN YUM install texlive-ifluatex* -y
-RUN YUM install texlive-collection-fontsrecommended -y
-RUN YUM install texlive-collection-latexrecommended -y
+RUN yum install texlive-latex-bin -y
+RUN yum install texlive-texconfig* -y
+RUN yum install texlive-latex* -y
+RUN yum install texlive-metafont* -y
+RUN yum install texlive-cmap* -y
+RUN yum install texlive-ec -y
+RUN yum install texlive-fncychap* -y
+RUN yum install texlive-pdftex-def -y
+RUN yum install texlive-fancyhdr* -y
+RUN yum install texlive-titlesec* -y
+RUN yum install texlive-multirow -y
+RUN yum install texlive-framed* -y
+RUN yum install texlive-wrapfig* -y
+RUN yum install texlive-parskip* -y
+RUN yum install texlive-caption -y
+RUN yum install texlive-ifluatex* -y
+RUN yum install texlive-collection-fontsrecommended -y
+RUN yum install texlive-collection-latexrecommended -y
 
 USER rma
 
