@@ -38,6 +38,7 @@ RUN chmod -R 777 /home/runmyaccounts/runmyaccounts
 # Repositories
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 RUN dnf -y install dnf-plugins-core
+RUN dnf -y install gcc
 RUN dnf config-manager --set-enabled powertools
 RUN dnf repolist
 
@@ -54,8 +55,14 @@ RUN yum install perl-DBD-Pg -y
 RUN cpan Text::Markdown -y
 RUN cpan DBIx::Simple -y
 RUN cpan SL::Form -y
+RUN cpan -fi HTML::Entities -y
+RUN cpan -fi HTML::FromText -y
+
+# Below used only for debugging perl
+RUN cpan Try::Tiny -y
 
 # requred for PDF (not all are required)
+RUN yum makecache -y
 RUN yum install texlive-pdftex  -y
 RUN yum install texlive-latex-bin -y
 RUN yum install texlive-texconfig* -y
