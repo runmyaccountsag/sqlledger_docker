@@ -41,11 +41,13 @@ This is a Dockerfile to run SQL-Ledger.
    `psql -U rma -h ip -p 5432 phoenix_core`
    `psql -U sql-ledger -h ip -p 5432 development1`
 
-5. You might have to edit the sql-ledger connections in admin.pl that are already there. 
-   So you'd have to change the ip address of the db sql-ledger connects to.
-   So change in under every user change localhost -> `host.docker.internal`
-   You can generally use docker alias as the ip.
-   So you don't have to change them all the time when your ip changes.
+5. You might have to edit the sql-ledger connections in [admin.pl](http://localhost:8082/runmyaccounts/admin.pl)  that are already there. 
+   - You have to change the ip address of the db sql-ledger connects to.
+   Change in under **every user**  change localhost -> `host.docker.internal`
+   You can generally use docker alias mentioned above as the ip.
+   - Change it for all the users inc tools@.. rma@.. etc.
+   - Why? So, you don't have to change them all the time when your ip changes.
+  
 
 ### Local access to ledger src
 
